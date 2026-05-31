@@ -30,12 +30,12 @@ const DATE_TYPE_LABELS = {
 
 const CUISINE_OPTIONS = [
   { label: "Korean", flag: "🇰🇷" },
-  { label: "Chinese", flag: "🇨🇳" },
   { label: "Persian", flagImage: "flags/lion-sun.svg" },
   { label: "Mexican", flag: "🇲🇽" },
   { label: "Sushi", flag: "🇯🇵" },
   { label: "Middle Eastern", flag: "🇱🇧" },
   { label: "Italian", flag: "🇮🇹" },
+  { label: "Chinese", flag: "🇨🇳" },
 ];
 
 const FUN_ACTIVITY_OPTIONS = [
