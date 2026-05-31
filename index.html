@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you go out with me? 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="hearts-bg" aria-hidden="true"></div>
+
+  <main class="card" id="app">
+    <!-- Step 1: The big question -->
+    <section class="step active" id="step-ask" data-step="ask">
+      <p class="eyebrow">Hello, Asal! 💗</p>
+      <h1 class="title">Will you go out with me?</h1>
+      <p class="subtitle">I made you a little website because you're worth the extra effort 😊</p>
+      <div class="ask-buttons">
+        <button type="button" class="btn btn-yes" id="btn-yes">Yes!</button>
+        <div class="no-dodge-zone" id="no-dodge-zone">
+          <button type="button" class="btn btn-no" id="btn-no">No</button>
+        </div>
+      </div>
+      <p class="no-message hidden" id="no-message" role="alert"></p>
+    </section>
+
+    <!-- Step 2: Celebration -->
+    <section class="step" id="step-yay" data-step="yay">
+      <div class="confetti" aria-hidden="true"></div>
+      <h1 class="title yay">Yay!! 🎉</h1>
+      <p class="subtitle">Now, let's plan something special!</p>
+      <button type="button" class="btn btn-primary" id="btn-continue-day">Pick a day →</button>
+    </section>
+
+    <!-- Step 3: Choose day -->
+    <section class="step" id="step-day" data-step="day">
+      <p class="eyebrow">when</p>
+      <h2 class="title-sm">Which day works for you?</h2>
+      <div class="options-grid" id="day-options"></div>
+    </section>
+
+    <!-- Step 4: Choose time -->
+    <section class="step" id="step-time" data-step="time">
+      <p class="eyebrow">what time</p>
+      <h2 class="title-sm">What time on <span id="selected-day-label"></span>?</h2>
+      <div class="options-grid" id="time-options"></div>
+      <button type="button" class="btn btn-ghost back-btn" data-back="day">← Back</button>
+    </section>
+
+    <!-- Step 5: Date type -->
+    <section class="step" id="step-type" data-step="type">
+      <p class="eyebrow">the vibe</p>
+      <h2 class="title-sm">What kind of date sounds best?</h2>
+      <div class="options-grid type-grid" id="type-options">
+        <button type="button" class="option-card" data-type="dinner">
+          <span class="option-emoji">🍽️</span>
+          <span class="option-label">Dinner date</span>
+          <span class="option-hint">Cozy food & good conversation</span>
+        </button>
+        <button type="button" class="option-card" data-type="fun">
+          <span class="option-emoji">🎢</span>
+          <span class="option-label">Fun date</span>
+          <span class="option-hint">Laughs, adventure & memories</span>
+        </button>
+        <button type="button" class="option-card" data-type="surprise">
+          <span class="option-emoji">🎁</span>
+          <span class="option-label">Surprise me!</span>
+          <span class="option-hint">Leave the planning to me</span>
+        </button>
+      </div>
+      <button type="button" class="btn btn-ghost back-btn" data-back="time">← Back</button>
+    </section>
+
+    <!-- Step 6: Fun activity -->
+    <section class="step" id="step-fun" data-step="fun">
+      <p class="eyebrow">let's play</p>
+      <h2 class="title-sm">What sounds fun?</h2>
+      <div class="options-grid" id="fun-options"></div>
+      <button type="button" class="btn btn-ghost back-btn" data-back="type">← Back</button>
+    </section>
+
+    <!-- Step 7: Cuisine (dinner dates) -->
+    <section class="step" id="step-food" data-step="food">
+      <p class="eyebrow">yum</p>
+      <h2 class="title-sm">What are you in the mood for?</h2>
+      <div class="options-grid" id="food-options"></div>
+      <button type="button" class="btn btn-ghost back-btn" data-back="type">← Back</button>
+    </section>
+
+    <!-- Step 7b: Custom cuisine -->
+    <section class="step" id="step-food-custom" data-step="food-custom">
+      <p class="eyebrow">surprise me</p>
+      <h2 class="title-sm">What did you have in mind?</h2>
+      <p class="subtitle subtitle-tight">Anything not on the list. I'll figure it out :)</p>
+      <form id="food-custom-form" class="requests-form">
+        <label class="sr-only" for="custom-cuisine">Custom cuisine</label>
+        <input
+          type="text"
+          id="custom-cuisine"
+          name="customCuisine"
+          placeholder="e.g. Thai, ramen, Indian spot…"
+          required
+          maxlength="120"
+        />
+        <button type="submit" class="btn btn-primary">Continue →</button>
+      </form>
+      <button type="button" class="btn btn-ghost back-btn" data-back="food">← Back</button>
+    </section>
+
+    <!-- Step 8: Special requests -->
+    <section class="step" id="step-requests" data-step="requests">
+      <p class="eyebrow">anything else?</p>
+      <h2 class="title-sm">Should I know any special requests?</h2>
+      <p class="subtitle subtitle-tight">Allergies, favorites, things to avoid, whatever helps me plan for you.</p>
+      <form id="requests-form" class="requests-form">
+        <label class="sr-only" for="special-requests">Special requests</label>
+        <textarea
+          id="special-requests"
+          name="specialRequests"
+          rows="4"
+          placeholder=""
+        ></textarea>
+        <button type="submit" class="btn btn-primary">Continue →</button>
+        <button type="button" class="btn btn-ghost" id="btn-skip-requests">Nothing special. Continue</button>
+      </form>
+      <button type="button" class="btn btn-ghost back-btn" id="btn-back-requests">← Back</button>
+    </section>
+
+    <!-- Step 9: Area -->
+    <section class="step" id="step-location" data-step="location">
+      <p class="eyebrow">where</p>
+      <h2 class="title-sm" id="location-title">Which area feels most comfortable?</h2>
+      <div class="options-grid" id="location-options"></div>
+      <button type="button" class="btn btn-ghost back-btn" id="btn-back-location">← Back</button>
+    </section>
+
+    <!-- Step 10: Summary -->
+    <section class="step" id="step-done" data-step="done">
+      <h1 class="title yay">It's a date! 💕</h1>
+      <div class="summary" id="summary"></div>
+      <p class="subtitle" id="done-subtitle">Can't wait to see you, Asal! ✨</p>
+      <p class="submit-status hidden" id="submit-status" role="status"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
